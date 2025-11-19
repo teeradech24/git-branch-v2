@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครเรียน - แผนกไอที 2569</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ff2d75;
+            --primary-dark: #e6005c;
+            --secondary: #1a1a1a;
+            --accent: #ff8cb4;
+            --light: #f8f8f8;
+            --dark: #0d0d0d;
+            --gray: #2a2a2a;
+            --text: #ffffff;
+            --text-secondary: #cccccc;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(13, 13, 13, 0.95);
+            color: var(--text);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(255, 45, 117, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 0 15px rgba(255, 45, 117, 0.5);
+        }
+        
+        .logo-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        nav ul li a:hover::before {
+            left: 100%;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 45, 117, 0.1);
+            color: var(--primary);
+        }
+        
+        nav ul li a.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 45, 117, 0.5);
+        }
+        
+        /* Register Section */
+        .register-section {
+            padding: 50px 0;
+            background: linear-gradient(rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.95)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .register-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 45, 117, 0.1), transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(255, 140, 180, 0.1), transparent 50%);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .register-container {
+            background: rgba(42, 42, 42, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .register-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 45, 117, 0.3);
+        }
+        
+        /* Form Progress */
+        .form-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .form-progress::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+        
+        .progress-step.active .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 45, 117, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-step.active .step-label {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .progress-step.completed .step-number {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .progress-step.completed .step-number::after {
+            content: '✓';
+        }
+        
+        /* Form Steps */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--text);
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        
+        .required::after {
+            content: ' *';
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            color: var(--text);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 45, 117, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 5px;
+            accent-color: var(--primary);
+        }
+        
+        .checkbox-group label {
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            color: var(--text-secondary);
+        }
+        
+        .file-upload-btn:hover {
+            border-color: var(--primary);
+            background: rgba(255, 45, 117, 0.1);
+        }
+        
+        .file-upload-btn i {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--primary);
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(255, 45, 117, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 45, 117, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 45, 117, 0.1);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-secondary);
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .register-container {
+                padding: 40px 25px;
+            }
+            
+            .form-progress {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .form-progress::before {
+                display: none;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h1>แผนกเทคโนโลยีสารสนเทศ</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">หน้าแรก</a></li>
+                        <li><a href="login.html">เข้าสู่ระบบ</a></li>
+                        <li><a href="register.html" class="active">สมัครเรียน</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <section class="register-section">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 80px; height: 80px; top: 10%; left: 5%;"></div>
+            <div class="floating-element" style="width: 120px; height: 120px; top: 60%; right: 10%;"></div>
+            <div class="floating-element" style="width: 60px; height: 60px; bottom: 20%; left: 20%;"></div>
+        </div>
+        <div class="container">
+            <div class="section-title">
+                <h2>สมัครเรียนแผนกไอที</h2>
+                <p>กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้องเพื่อสมัครเรียนแผนกเทคโนโลยีสารสนเทศ ปีการศึกษา 2569</p>
+            </div>
+            
+            <div class="register-container">
+                <!-- Form Progress -->
+                <div class="form-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">ข้อมูลส่วนตัว</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">ข้อมูลการศึกษา</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">ข้อมูลติดต่อ</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">ยืนยันข้อมูล</div>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" id="step-1">
+                    <h3 class="step-title">ข้อมูลส่วนตัว</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required">ชื่อ</label>
+                            <input type="text" id="firstName" class="form-control" placeholder="กรอกชื่อ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="required">นามสกุล</label>
+                            <input type="text" id="lastName" class="form-control" placeholder="กรอกนามสกุล" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nickname">ชื่อเล่น</label>
+                            <input type="text" id="nickname" class="form-control" placeholder="กรอกชื่อเล่น">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" class="required">เพศ</label>
+                            <select id="gender" class="form-control" required>
+                                <option value="">เลือกเพศ</option>
+                                <option value="male">ชาย</option>
+                                <option value="female">หญิง</option>
+                                <option value="other">อื่นๆ</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate" class="required">วันเดือนปีเกิด</label>
+                            <input type="date" id="birthDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality" class="required">สัญชาติ</label>
+                            <input type="text" id="nationality" class="form-control" placeholder="กรอกสัญชาติ" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <div></div> <!-- Empty div for spacing -->
+                        <button type="button" class="btn next-step" data-next="2">ถัดไป</button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Educational Information -->
+                <div class="form-step" id="step-2">
+                    <h3 class="step-title">ข้อมูลการศึกษา</h3>
+                    
+                    <div class="form-group">
+                        <label for="school" class="required">โรงเรียนเดิม</label>
+                        <input type="text" id="school" class="form-control" placeholder="กรอกชื่อโรงเรียน" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gpa" class="required">เกรดเฉลี่ย</label>
+                            <input type="number" id="gpa" class="form-control" placeholder="0.00" min="0" max="4" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="program" class="required">หลักสูตรที่สนใจ</label>
+                            <select id="program" class="form-control" required>
+                                <option value="">เลือกหลักสูตร</option>
+                                <option value="software">การพัฒนาซอฟต์แวร์</option>
+                                <option value="network">ระบบเครือข่ายคอมพิวเตอร์</option>
+                                <option value="database">การจัดการฐานข้อมูล</option>
+                                <option value="multimedia">เทคโนโลยีมัลติมีเดีย</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">ประสบการณ์ด้านไอที</label>
+                        <textarea id="experience" class="form-control" placeholder="กรอกรายละเอียดประสบการณ์ด้านไอที (ถ้ามี)"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline prev-step" data-prev="1">ย้อนกลับ</button>
+                        <button type="button" class="btn next-step" data-next="3">ถัดไป</button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Contact Information -->
+                <div class="form-step" id="step-3">
+                    <h3 class="step-title">ข้อมูลติดต่อ</h3>
+                    
+                    <div class="form-group">
+                        <label for="address" class="required">ที่อยู่</label>
+                        <textarea id="address" class="form-control" placeholder="กรอกที่อยู่ปัจจุบัน" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone" class="required">เบอร์โทรศัพท์</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="กรอกเบอร์โทรศัพท์" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="required">อีเมล</label>
+                            <input type="email" id="email" class="form-control" placeholder="กรอกอีเมล" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parentName" class="required">ชื่อผู้ปกครอง</label>
+                        <input type="text" id="parentName" class="form-control" placeholder="กรอกชื่อผู้ปกครอง" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentPhone" class="required">เบอร์โทรผู้ปกครอง</label>
+                            <input type="tel" id="parentPhone" class="form-control" placeholder="กรอกเบอร์โทรผู้ปกครอง" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentRelation" class="required">ความสัมพันธ์</label>
+                            <select id="parentRelation" class="form-control" required>
+                                <option value="">เลือกความสัมพันธ์</option>
+                                <option value="father">บิดา</option>
+                                <option value="mother">มารดา</option>
+                                <option value="guardian">ผู้ปกครอง</option>
+                                <option value="other">อื่นๆ</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline prev-step" data-prev="2">ย้อนกลับ</button>
+                        <button type="button" class="btn next-step" data-next="4">ถัดไป</button>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Confirmation -->
+                <div class="form-step" id="step-4">
+                    <h3 class="step-title">ยืนยันข้อมูล</h3>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="confirmInfo" required>
+                            <label for="confirmInfo" class="required">ข้าพเจ้ายืนยันว่าข้อมูลทั้งหมดที่กรอกเป็นความจริง</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <label for="agreeTerms" class="required">ข้าพเจ้ายอมรับข้อกำหนดและเงื่อนไข</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>อัพโหลดรูปภาพ</label>
+                        <div class="file-upload">
+                            <div class="file-upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>คลิกเพื่ออัพโหลดรูปภาพ</span>
+                                <p>รองรับไฟล์ JPG, PNG ขนาดไม่เกิน 5MB</p>
+                            </div>
+                            <input type="file" id="photo" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline prev-step" data-prev="3">ย้อนกลับ</button>
+                        <button type="submit" class="btn" id="submit-btn">ส่งใบสมัคร</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>เกี่ยวกับเรา</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> ประวัติแผนก</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> วิสัยทัศน์และพันธกิจ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> บุคลากร</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ข้อมูลสำหรับนักเรียน</h3>
+                    <ul>
+                        <li><a href="login.html"><i class="fas fa-chevron-right"></i> เข้าสู่ระบบ</a></li>
+                        <li><a href="register.html"><i class="fas fa-chevron-right"></i> สมัครเรียน</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> ปฏิทินการศึกษา</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> ดาวน์โหลดเอกสาร</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ติดต่อเรา</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> แผนกเทคโนโลยีสารสนเทศ</li>
+                        <li><i class="fas fa-university"></i> สถาบันการศึกษาแห่งหนึ่ง</li>
+                        <li><i class="fas fa-road"></i> 123 ถนนการศึกษา</li>
+                        <li><i class="fas fa-city"></i> อำเภอเมือง จังหวัดตัวอย่าง</li>
+                        <li><i class="fas fa-phone"></i> โทร: 012-345-6789</li>
+                        <li><i class="fas fa-envelope"></i> อีเมล: it.department@example.ac.th</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 แผนกเทคโนโลยีสารสนเทศ สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Multi-step form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            const steps = document.querySelectorAll('.form-step');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Next button functionality
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-step');
+                    const nextStepId = this.getAttribute('data-next');
+                    const nextStep = document.getElementById(`step-${nextStepId}`);
+                    
+                    // Validate current step before proceeding
+                    if (validateStep(currentStep)) {
+                        currentStep.classList.remove('active');
+                        nextStep.classList.add('active');
+                        updateProgress(nextStepId);
+                    }
+                });
+            });
+            
+            // Previous button functionality
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-step');
+                    const prevStepId = this.getAttribute('data-prev');
+                    const prevStep = document.getElementById(`step-${prevStepId}`);
+                    
+                    currentStep.classList.remove('active');
+                    prevStep.classList.add('active');
+                    updateProgress(prevStepId);
+                });
+            });
+            
+            // Submit button functionality
+            submitBtn.addEventListener('click', function() {
+                const currentStep = this.closest('.form-step');
+                
+                if (validateStep(currentStep)) {
+                    // Show loading state
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่งข้อมูล...';
+                    this.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(function() {
+                        alert('ส่งใบสมัครสำเร็จ! เราจะติดต่อกลับไปในเร็วๆ นี้');
+                        // In a real application, you would submit the form here
+                        // document.getElementById('registration-form').submit();
+                    }, 2000);
+                }
+            });
+            
+            // Update progress indicator
+            function updateProgress(stepId) {
+                progressSteps.forEach(step => {
+                    const stepNumber = step.getAttribute('data-step');
+                    
+                    if (stepNumber < stepId) {
+                        step.classList.add('completed');
+                        step.classList.remove('active');
+                    } else if (stepNumber == stepId) {
+                        step.classList.add('active');
+                        step.classList.remove('completed');
+                    } else {
+                        step.classList.remove('active', 'completed');
+                    }
+                });
+            }
+            
+            // Validate form step
+            function validateStep(step) {
+                const inputs = step.querySelectorAll('input[required], select[required], textarea[required]');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = 'var(--primary)';
+                        input.style.boxShadow = '0 0 0 3px rgba(255, 45, 117, 0.3)';
+                        
+                        // Remove error styling after a delay
+                        setTimeout(() => {
+                            input.style.borderColor = '';
+                            input.style.boxShadow = '';
+                        }, 3000);
+                    }
+                });
+                
+                if (!isValid) {
+                    alert('กรุณากรอกข้อมูลให้ครบถ้วนก่อนดำเนินการต่อ');
+                }
+                
+                return isValid;
+            }
+            
+            // File upload preview (simplified)
+            const fileInput = document.getElementById('photo');
+            fileInput.addEventListener('change', function() {
+                const fileUploadBtn = document.querySelector('.file-upload-btn');
+                if (this.files.length > 0) {
+                    fileUploadBtn.innerHTML = `
+                        <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                        <span>อัพโหลดไฟล์สำเร็จ: ${this.files[0].name}</span>
+                    `;
+                }
+            });
+        });
+    </script>
+</
