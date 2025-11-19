@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้จัดทำ | Our Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --dark: #0f0f1a;
+            --darker: #080811;
+            --pink: #ff2d75;
+            --pink-light: #ff5c9d;
+            --pink-dark: #e0005a;
+            --text: #f0f0f0;
+            --text-light: #b8b8c7;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .team-section {
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--pink-light);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            border-radius: 4px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-card {
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 45, 117, 0.2);
+        }
+        
+        .card-image {
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 45, 117, 0.1), rgba(255, 92, 157, 0.05));
+            z-index: 1;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--pink-light);
+        }
+        
+        .member-role {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(255, 45, 117, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 45, 117, 0.3);
+        }
+        
+        .member-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-tag {
+            background: rgba(255, 45, 117, 0.1);
+            color: var(--pink-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 45, 117, 0.3);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 45, 117, 0.1);
+            color: var(--pink-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 45, 117, 0.3);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 45, 117, 0.4);
+        }
+        
+        .team-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: var(--text-light);
+            border-top: 1px solid rgba(255, 45, 117, 0.2);
+        }
+        
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .team-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">NEO<span style="color: var(--pink)">TEAM</span></div>
+            <h1>ผู้จัดทำ</h1>
+            <p class="subtitle">ทีมงานผู้มีความเชี่ยวชาญและประสบการณ์ พร้อมสร้างสรรค์ผลงานที่มีคุณภาพ</p>
+        </header>
+        
+        <div class="team-section">
+            <h2 class="section-title">พบกับทีมงานของเรา</h2>
+            
+            <div class="team-grid">
+                <!-- ผู้จัดทำคนที่ 1 -->
+                <div class="team-card">
+                    <div class="card-image">
+                        <img src="img/g1.png" alt="นายเมคเกอร์" onerror="this.src=">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="member-name">นายเมคเกอร์</h3>
+                        <div class="member-role">Frontend Developer</div>
+                        <p class="member-description">ผู้เชี่ยวชาญด้านการออกแบบและพัฒนาเว็บไซต์ ด้วยประสบการณ์กว่า 5 ปี ในด้าน UI/UX Design และ Frontend Development</p>
+                        
+                        <div class="member-skills">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ผู้จัดทำคนที่ 2 -->
+                <div class="team-card">
+                    <div class="card-image">
+                        <img src="img/g3.png" alt="นายคิบ" onerror="this.src=">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="member-name">นายคิบ</h3>
+                        <div class="member-role">Backend Developer</div>
+                        <p class="member-description">ผู้เชี่ยวชาญด้านการพัฒนาเซิร์ฟเวอร์และระบบฐานข้อมูล ด้วยความรู้ลึกด้านสถาปัตยกรรมซอฟต์แวร์และความปลอดภัย</p>
+                        
+                        <div class="member-skills">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Database</span>
+                            <span class="skill-tag">API Design</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ผู้จัดทำคนที่ 3 -->
+                <div class="team-card">
+                    <div class="card-image">
+                        <img src="img/g2.png" alt="นายดิว" onerror="this.src=">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="member-name">นายดิว</h3>
+                        <div class="member-role">Full Stack Developer</div>
+                        <p class="member-description">ผู้เชี่ยวชาญด้านการพัฒนาแอปพลิเคชันแบบครบวงจร ทั้ง Frontend และ Backend ด้วยเทคโนโลยีที่ทันสมัย</p>
+                        
+                        <div class="member-skills">
+                            <span class="skill-tag">MERN Stack</span>
+                            <span class="skill-tag">DevOps</span>
+                            <span class="skill-tag">Cloud</span>
+                            <span class="skill-tag">Mobile App</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-stats">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">โปรเจ็กต์สำเร็จ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">ปีประสบการณ์</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">ลูกค้าพึงพอใจ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">ผู้เชี่ยวชาญ</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 NEO TEAM. สงวนลิขสิทธิ์ทุกประการ</p>
+        </footer>
+    </div>
+
+    <script>
+        // เพิ่มเอฟเฟกต์เมื่อเลื่อนดูทีม
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamCards = document.querySelectorAll('.team-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            teamCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
