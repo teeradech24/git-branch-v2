@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่องทางการติดต่อ | Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --dark: #0f0f1a;
+            --darker: #080811;
+            --pink: #ff2d75;
+            --pink-light: #ff5c9d;
+            --pink-dark: #e0005a;
+            --text: #f0f0f0;
+            --text-light: #b8b8c7;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+        }
+        
+        .contact-form {
+            background: rgba(15, 15, 26, 0.7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--pink-light);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink), var(--pink-light));
+            border-radius: 3px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .info-icon {
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(255, 45, 117, 0.3);
+        }
+        
+        .info-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--pink-light);
+        }
+        
+        .info-content p {
+            color: var(--text-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 45, 117, 0.1);
+            color: var(--pink-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 45, 117, 0.3);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 45, 117, 0.4);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(8, 8, 17, 0.7);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+            box-shadow: 0 0 0 2px rgba(255, 45, 117, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 5px 15px rgba(255, 45, 117, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 45, 117, 0.4);
+        }
+        
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: var(--text-light);
+            border-top: 1px solid rgba(255, 45, 117, 0.2);
+        }
+        
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">NEO<span style="color: var(--pink)">CONTACT</span></div>
+            <h1>ช่องทางการติดต่อ</h1>
+            <p class="subtitle">เราพร้อมให้คำปรึกษาและตอบคำถามของคุณ ติดต่อเราได้ผ่านช่องทางต่างๆ ด้านล่างนี้</p>
+        </header>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2 class="section-title">ข้อมูลติดต่อ</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>ที่อยู่</h3>
+                        <p>123 ถนนเทคโนโลยี แขวงดิจิตอล เขตบางนา กรุงเทพมหานคร 10110</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>โทรศัพท์</h3>
+                        <p>+66 (0) 2 123 4567</p>
+                        <p>+66 (0) 89 123 4567</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>อีเมล</h3>
+                        <p>info@neocontact.com</p>
+                        <p>support@neocontact.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>เวลาทำการ</h3>
+                        <p>จันทร์ - ศุกร์: 9:00 - 18:00 น.</p>
+                        <p>เสาร์: 9:00 - 15:00 น.</p>
+                        <p>ปิดทำการวันอาทิตย์และวันหยุดนักขัตฤกษ์</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem; color: var(--pink-light);">ติดตามเรา</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="section-title">ส่งข้อความถึงเรา</h2>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">ชื่อ-นามสกุล</label>
+                        <input type="text" id="name" placeholder="กรุณากรอกชื่อและนามสกุลของคุณ" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">อีเมล</label>
+                        <input type="email" id="email" placeholder="กรุณากรอกอีเมลของคุณ" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">เบอร์โทรศัพท์</label>
+                        <input type="tel" id="phone" placeholder="กรุณากรอกเบอร์โทรศัพท์ของคุณ">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">หัวข้อ</label>
+                        <input type="text" id="subject" placeholder="หัวข้อที่ต้องการติดต่อ" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">ข้อความ</label>
+                        <textarea id="message" placeholder="กรุณากรอกข้อความที่ต้องการส่งถึงเรา" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> ส่งข้อความ
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem; color: var(--pink-light);"></i>
+                <div>แผนที่ตั้งสำนักงานของเรา</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 NEO CONTACT. สงวนลิขสิทธิ์ทุกประการ</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // รับค่าจากฟอร์ม
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            // แสดงข้อความแจ้งเตือน
+            alert(`ขอบคุณ ${name} สำหรับข้อความของคุณ!\nเราจะตอบกลับไปยัง ${email} ในหัวข้อ "${subject}" เร็วๆ นี้`);
+            
+            // รีเซ็ตฟอร์ม
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+</body>
+</html>
